@@ -13,7 +13,7 @@ if [ ! -f "$MANIFEST_FILE" ]; then
         echo "$(date) $UPGRADE_FILE does not exist, exiting..." >> $SPLUNK_HOME/var/log/splunk/forwarderupgrade.log
     else
     	echo "$(date) adding upgrade job to system with $SPLUNK_HOME/etc/apps/fwd_upgrade/bin/install_upgrade.sh $SPLUNK_HOME" >> $SPLUNK_HOME/var/log/splunk/forwarderupgrade.log
-        echo /bin/bash "$SPLUNK_HOME/etc/apps/fwd_upgrade/bin/install_upgrade.sh" "$SPLUNK_HOME" > "$SPLUNK_HOME/etc/apps/fwd_upgrade/bin/job.list"
+        echo /bin/bash "$SPLUNK_HOME/etc/apps/fwd_upgrade/bin/install_upgrade.sh" "$SPLUNK_HOME" "$VERSION" > "$SPLUNK_HOME/etc/apps/fwd_upgrade/bin/job.list"
 	OUTPUT=$(/bin/at now + 1 minute < "$SPLUNK_HOME/etc/apps/fwd_upgrade/bin/job.list")
 	echo "$(date) job added with output: $OUTPUT" >> $SPLUNK_HOME/var/log/splunk/forwarderupgrade.log
         echo "$(date) job added to system with $(atq)" >> $SPLUNK_HOME/var/log/splunk/forwarderupgrade.log
