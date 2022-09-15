@@ -2,7 +2,7 @@
 
 SPLUNK_HOME=$1
 
-VERSION=9.0.0.1-9e907cedecb1
+VERSION=$2
 
 MANIFEST_FILE=$SPLUNK_HOME/splunkforwarder-$VERSION-linux-2.6-x86_64-manifest
 UPGRADE_FILE=$SPLUNK_HOME/etc/apps/fwd_upgrade/bin/splunkforwarder-$VERSION-Linux-x86_64.tgz
